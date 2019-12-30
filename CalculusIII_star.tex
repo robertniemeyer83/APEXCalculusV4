@@ -11,6 +11,10 @@
 {\documentclass[10pt]{article}}%
 {\documentclass[10pt]{book}}
 
+\newboolean{color}
+\setboolean{color}{true}
+
+
 \newboolean{printlabelname}
 \setboolean{printlabelname}{false}
 \ifthenelse{\boolean{printlabelname}}{\usepackage[notref,notcite]{showkeys}}{}
@@ -28,6 +32,7 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.8}
 \usepackage{pdfpages}
+\usepackage[all,cmtip]{xy}
 
 
 
@@ -59,7 +64,8 @@
 %%%\tracingonline=1
 \begin{document}
 %\printexercisenames
-\printincolor
+%\printincolor
+\ifthenelse{\boolean{color}}{\printincolor}{\printinblackandwhite}
 %\printinblackandwhite
 %\usetwoDgraphics
 %\printallanswers
@@ -232,6 +238,9 @@
 \input{text/12_Directional_Derivatives}
 \input{text/12_Tangent_Planes_Lines}
 \input{text/12_Extrema}
+\input{text/12_Derivative_Matrix}
+\input{text/12_Further_Extrema}
+
 
 %%\addtocounter{chapter}{12}
 \clearpage{\pagestyle{empty}\cleardoublepage}
@@ -246,7 +255,17 @@
 \input{text/13_Cylindrical_Spherical}
 \addtocontents{toc}{\protect\thispagestyle{empty}}
 
-
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\chapter{Vector Analysis}\label{chapter:vector_calc}
+\thispagestyle{empty}
+\input{text/14_Line_Integral_Intro}
+\input{text/14_Vector_Fields}
+\input{text/14_Line_Integral_Vector_Fields}
+\input{text/14_Line_Integral_Greens_Theorem}
+\input{text/14_Parametrized_Surfaces}
+\input{text/14_Surface_Integrals}
+\input{text/14_Stokes_Divergence}
+ 
 %\addtocontents{toc}{\protect\thispagestyle{empty}}
 %
 %\clearpage{\pagestyle{empty}\cleardoublepage}
