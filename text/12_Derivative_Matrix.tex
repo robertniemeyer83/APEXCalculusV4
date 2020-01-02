@@ -4,7 +4,7 @@ We defined what it means for a real-valued function of two variables to be \emph
 \item What about \emph{vector}-valued functions of several variables? (That is, functions $f$ with a domain $D\subseteq \mathbb{R}^n$ and range in $\mathbb{R}^m$ for some $m >1$.)
 \item What is \emph{the} derivative of a function of several variables? After all, we know how to define $\fp(x)$ and $\vrp(t)$ for real or vector-valued functions of one variable.
 \end{enumerate}
-One might be tempted at first to simply mimic the definition of the derivative from Chapter \ref{I-chapter:derivatives}, but we quickly run into trouble, for a reason that is immediately obvious. 
+One might be tempted at first to simply mimic the definition of the derivative from Chapter \ref{chapter:derivatives}, but we quickly run into trouble, for a reason that is immediately obvious. 
 
 \mnote{.65}{\textbf{Note:} To simplify notation, we shift focus slightly and represent points in $\mathbb{R}^n$ by their position vectors, and think of functions of several variables as functions of a vector variable. For example, we'll write $f(\vec{x})$ instead of $f(x_1,x_2,\ldots, x_n)$.}
 
@@ -14,17 +14,22 @@ Let $\vec{a}$ be a fixed point in $\mathbb{R}^n$, and let $\vec{h}$ represent a 
 \]
 (Note that division by a vector is nonsense, so we must divide by $\norm{\vec{h}}$, not $\vec{h}$.) But of course, we know that this limit does not exist, because it depends on the direction in which $\vec{h}$ approaches $\vec{0}$! Indeed, if $\vec{h} = h\vec{i}$ or $h\vec{j}$, we get a partial derivative, and for any unit vector $\vec{u}$, setting $\vec{h}=h\vec{u}$ gives us a directional derivative, and we know from Section \ref{sec:directional_derivative} that a directional derivative depends on $\vec{u}$. It seems this approach is doomed to failure. What can we try instead?
 
-The key to generalizing the definition of the derivative given in Definition \ref{I-def:derivative_at_a_point} in Chapter \ref{I-chapter:derivatives} is remembering the following essential property of the derivative: the derivative $\fp(a)$ is used to compute the \emph{best linear approximation} to $f$ at $a$. Indeed, the \emph{linearization}\index{linearization} of $f$ at $a$ is the linear function
+The key to generalizing the definition of the derivative given in Definition \ref{def:derivative_at_a_point} in Chapter \ref{chapter:derivatives} is remembering the following essential property of the derivative: the derivative $\fp(a)$ is used to compute the \emph{best linear approximation} to $f$ at $a$. Indeed, the \emph{linearization}\index{linearization} of $f$ at $a$ is the linear function
 \begin{equation}\label{eq_linearization}
 L_a(x) = f(a) +\fp(a)(x-a).
 \end{equation}
+
 That this is the best linear approximation of $f$ at $a$ can be understood as follows: first, note that the graph $y=L_a(x)$ is simply the equation of the tangent line to $y=f(x)$ at $a$. Second, note that the difference between $f(x)$ and $L_a(x)$ vanishes faster than the difference $x-a$ as $x$ approaches $a$:
+
+
+
 \begin{align*}
 \lim_{x\to a}\frac{f(x)-L_a(x)}{x-a} &= \lim_{x\to a}\frac{f(x)-(f(a)+\fp(a)(x-a))}{x-a}\\
 & = \lim_{x\to a}\left(\frac{f(x)-f(a)}{x-a}-\fp(a)\frac{x-a}{x-a}\right)\\
 & = \fp(a)-\fp(a)=0.
 \end{align*}
-\mnote{.4}{\textbf{Note:} In general, we say that two real-valued functions of one variable $f$ and $g$ \emph{agree to first order} at $a$ if 
+
+\mnote{.75}{\textbf{Note:} In general, we say that two real-valued functions of one variable $f$ and $g$ \emph{agree to first order} at $a$ if 
 \[
 \lim_{x\to a}\frac{\lvert f(x)-g(x)\rvert}{x-a}=0.
 \]
@@ -33,6 +38,7 @@ The linearization of $f$ at $a$ is the unique linear function that agrees with $
 \lim_{x\to a}\frac{\lvert f(x)-g(x)\rvert}{(x-a)^k}=0.
 \]
 For example one could define the degree $n$ Taylor polynomial of a function $f$ at $a$ to be the unique polynomial of degree $n$ that agrees with $f$ to order $k$ at $a$.}
+
 
 While the definition of the derivative doesn't generalize well to several variables, the notion of linear approximation does. Recall from your first course in linear algebra that, given any $m\times n$ matrix $A$, we can define a function $T$, called a \emph{linear transformation}, that takes an $n\times 1$ column vector as input, and produces an $m\times 1$ column vector as output:
 \[
@@ -49,9 +55,10 @@ In the above definition, the product $A\vec{x}$ is the usual matrix product of t
 \[
 A\cdot \vec{x} =\langle a_{11}x_1+\cdots + a_{1n}x_n, \ldots, a_{m1}x_1+\cdots +a_{mn}x_n\rangle
 \]
-to represent the same product in our notation. (And yes, the dot in this product is intended to remind you of the dot product between vectors: recall that the $(i,j)$-entry of a matrix product $AB$ is the dot product of the $i^{\text{th}}$ row of $A$ with the $j^{\text{th}}$ column of $B$.) We can now make the following definition.\\
 
-\mnote{.5}{\textbf{Note:} to avoid confusion between the meaning of \emph{linear function} in Calculus, and \emph{linear transformation} in Linear Algebra, we will use $\ell$ to denote the former, and $T$ to denote the latter. Notice that if $\vec{b}=\vec{0}$ in Definition \ref{def:gen_linear}, then a linear function \emph{is} a linear transformation.}
+to represent the same product in our notation. (And yes, the dot in this product is intended to remind you of the dot product between vectors: recall that the $(i,j)$-entry of a matrix product $AB$ is the dot product of the $i^{\text{th}}$ row of $A$ with the $j^{\text{th}}$ column of $B$.) We can now make the following definition.
+
+\mnote{.4}{\textbf{Note:} to avoid confusion between the meaning of \emph{linear function} in Calculus, and \emph{linear transformation} in Linear Algebra, we will use $\ell$ to denote the former, and $T$ to denote the latter. Notice that if $\vec{b}=\vec{0}$ in Definition \ref{def:gen_linear}, then a linear function \emph{is} a linear transformation.}
 
 \definition{def:gen_linear}{Linear function}{
  A function $\ell$ from $\mathbb{R}^n$ to $\mathbb{R}^m$ will be called a \sword{linear function} \index{linear function} if $\ell$ is of the form
@@ -163,11 +170,11 @@ Let's return to $n=2$ and Definition \ref{def:multi_differentiability} from Sect
 \]
 which is another way of saying that the error terms $E_x,E_y$ must vanish as $dx$ and $dy$ approach zero. Success! Definition \ref{def:general_differentiability} is indeed a generalization of Definition \ref{def:multi_differentiability}.
 
-Note that we've also generalized Definition \ref{I-def:derivative_at_a_point} for functions of one variable as well: Equation \eqref{eq_deriv_with_h} becomes
+Note that we've also generalized Definition \ref{def:derivative_at_a_point} for functions of one variable as well: Equation \eqref{eq_deriv_with_h} becomes
 \[
 \lim_{h\to 0}\left\lvert \frac{f(a+h)-f(a)}{h}-f'(a)\right\rvert = 0,
 \]
-which is just another way of re-writing the usual definition of the derivative. In fact, we've also generalized Definition \ref{III-def:vvf_derivative} from Chapter \ref{III-chap:vvf} for differentiability of vector-valued functions: all we have to do is write our vector-valued function as a column matrix. For
+which is just another way of re-writing the usual definition of the derivative. In fact, we've also generalized Definition \ref{def:vvf_derivative} from Chapter \ref{chap:vvf} for differentiability of vector-valued functions: all we have to do is write our vector-valued function as a column matrix. For
 \[
 \vec{r}(t) = \begin{bmatrix}x_1(t)\\x_2(t)\\\vdots \\x_m(t)\end{bmatrix} \quad \text{ and } \quad \vrp(t) = \begin{bmatrix}x_1\primeskip'(t)\\x_2\primeskip'(t)\\\vdots \\x_m\primeskip'(t)\end{bmatrix},
 \]
@@ -381,4 +388,6 @@ we have the corresponding composition
 
 This turns out to be an extremely powerful way of looking at derivatives and the Chain Rule. You may want to keep this in mind in later sections, such as when we consider change of variables in multiple integrals at the end of Chapter \ref{chapter:mult_int}, and when we define integrals over curves and surfaces in Chapter \ref{chapter:vector_calc}. We won't use this language when we get there, but many of the results in those sections (for example, the formula for surface area of a parametric surface) can be understood according to the two principles we have just seen: \emph{functions map points, while derivatives map tangent vectors}, and \emph{the derivative of a composition is the composition of the derivatives}. 
 
+
+\printexercises{exercises/12_Derivative_Matrix_exercises}
 \clearpage{\pagestyle{empty}\cleardoublepage}

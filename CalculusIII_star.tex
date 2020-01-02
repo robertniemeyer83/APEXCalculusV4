@@ -3,7 +3,7 @@
 % ISBN-13: 978-1514225158 
 % 
 % ISBN-10: 1514225158 
-%%%%
+%%%%   
 \RequirePackage{ifthen}
 \newboolean{longpage}
 \setboolean{longpage}{false}
@@ -31,8 +31,11 @@
 \input{headers/Header_Calculus}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.8}
+\usepgfplotslibrary{fillbetween,decorations.softclip,polar}
+
 \usepackage{pdfpages}
 \usepackage[all,cmtip]{xy}
+\usepackage{csquotes}
 
 
 
@@ -253,6 +256,7 @@
 \input{text/13_Surface_Area}
 \input{text/13_Triple_Integration}
 \input{text/13_Cylindrical_Spherical}
+\input{text/13_Transformations}
 \addtocontents{toc}{\protect\thispagestyle{empty}}
 
 \clearpage{\pagestyle{empty}\cleardoublepage}
@@ -265,6 +269,7 @@
 \input{text/14_Parametrized_Surfaces}
 \input{text/14_Surface_Integrals}
 \input{text/14_Stokes_Divergence}
+\input{text/14_Stokes_Proof}
  
 %\addtocontents{toc}{\protect\thispagestyle{empty}}
 %
