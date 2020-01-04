@@ -40,7 +40,15 @@ The linearization of $f$ at $a$ is the unique linear function that agrees with $
 For example one could define the degree $n$ Taylor polynomial of a function $f$ at $a$ to be the unique polynomial of degree $n$ that agrees with $f$ to order $k$ at $a$.}
 
 
-While the definition of the derivative doesn't generalize well to several variables, the notion of linear approximation does. Recall from your first course in linear algebra that, given any $m\times n$ matrix $A$, we can define a function $T$, called a \emph{linear transformation}, that takes an $n\times 1$ column vector as input, and produces an $m\times 1$ column vector as output:
+While the definition of the derivative doesn't generalize well to several variables, the notion of linear approximation does. In order for us to understand the following, we define what is called a \textit{linear transformation}. 
+
+
+\definition{def:linear_transformation}{Linear Transformation}
+{Let $V$ and $U$ be a vector spaces.  The  transformation $T:V\to U$ is a \sword{linear transformation} if for every scalar $a,b$ and $\vec x$, $\vec y$ in $V$ we have that $T(a\vec x+b\vec y) = aT(\vec x)+bT(\vec y)$.}
+
+
+
+One learns in a course on linear algebra that, given any $m\times n$ matrix $A$, we can derive a linear transformation $T$ that takes an $n\times 1$ column vector as input, and produces an $m\times 1$ column vector as output.  Such a transformation would be derived and behave as follows.
 \[
 T(\vec{x}) = A\vec{x} = 
 	\begin{bmatrix} 
