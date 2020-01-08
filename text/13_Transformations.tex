@@ -255,7 +255,7 @@ Finally, the fourth segment is given by $x=u$, $y=u^2+1$, for $1\leq u\leq 2$. T
 The resulting region is plotted in Figure \ref{fig:trans_map1}. Interestingly, two of the four sides of the rectangle bounding $D$ were mapped to (different portions of) the same curve.
 }\\
 
-\mtable{.4}{Plotting the image of the function $T$ in Example \ref{ex_trans_boundary}}{fig:trans_map1}{
+\mtable{.65}{Plotting the image of the function $T$ in Example \ref{ex_trans_boundary}}{fig:trans_map1}{
 \ifthenelse{\boolean{color}}{
 \begin{tikzpicture}
 \begin{axis}[width=\marginparwidth+25pt,%
@@ -343,9 +343,9 @@ We begin with an observation from single variable calculus. Consider the definit
 
 This gives us a way of thinking about the geometric effect of a substitution. In the integral $\displaystyle\int_{T(a)}^{T(b)}f(x)\,dx$, the subintervals in a partition (thought of as the width of the rectangles in a Riemann sum)  are stretched/shrunk horizontally by a factor given by the derivative $T'(u)$ of the transformation function $g(u)$. In the integral $\displaystyle\int_a^b f(T(u))T'(u)\,du$, the derivative $T'(u)$ is part of the integrand, and therefore our horizontal stretch/shrink becomes a vertical stretch/shrink. Of course, the area of a rectangle changes by the same amount regardless of whether the stretch/shrink is horizontal or vertical.
 
-\mnote{.4}{\textbf{Note:} In the discussion given here, we will stick to two variables for simplicity of presentation. However, everything we do for double integrals works equally well for triple integrals in three variables.}
+\mnote{.8}{\textbf{Note:} In the discussion given here, we will stick to two variables for simplicity of presentation. However, everything we do for double integrals works equally well for triple integrals in three variables.}
 
-\mnote{.25}{\textbf{Note:} Another common notation for the Jacobian is 
+\mnote{.4}{\textbf{Note:} Another common notation for the Jacobian is 
 \[
 J_T(u,v) = \frac{\partial (x,y)}{\partial (u,v)}.
 \]
@@ -402,12 +402,16 @@ T(u,v) = (\sqrt[3]{x^2y}, \sqrt[3]{xy^2}).
 \[
 x_u(u,v) = \frac{\partial}{\partial u}(\sqrt[3]{x^2y}) = \frac{1}{3}(x^2y)^{-2/3}(2xy),
 \]
+
 with similar results for the other four partial derivatives. Instead, let's first simplify using laws of exponents:
+
 \begin{align*}
 x(u,v) &= \sqrt[3]{x^2y} = (x^2y)^{1/3} = x^{2/3}y^{1/3} \quad\text{ and}\\
 y(u,v) &= \sqrt[3]{xy^2} = (xy^2)^{1/3} = x^{1/3}y^{2/3}.
 \end{align*}
+
 Now we only need the power rule to compute our partial derivatives, and we find
+
 \begin{align*}
 J_T(u,v) &= \det\begin{bmatrix}x_u(u,v)&x_v(u,v)\\y_u(u,v)&y_v(u,v)\end{bmatrix} \\
 &= \det\begin{bmatrix}\frac23 x^{-1/3}y^{1/3}& \frac13 x^{2/3}y^{-2/3}\\ \frac13 x^{-2/3}y^{2/3}& \frac23 x^{1/3}y^{-1/3}\end{bmatrix}\\
@@ -446,6 +450,7 @@ For example, the function $T(r,\theta) = (r\cos\theta,r\sin\theta)$ would not pr
 If we were using these transformations to help compute a double integral over a circular region, we'd get the wrong answer! }
 
 When $D$ is a closed, bounded subset, we can relax Definition \ref{def:transformation} slightly: each of the three conditions above must hold on the interior of $D$, but are allowed to fail on all or part of the boundary. In particular, this is the case for cylindrical, and spherical coordinates:
+
 \begin{itemize}
 \item The polar coordinate transformation $x=r\cos\theta, y=r\sin\theta$ is only one-to-one if $r>0$ and $\theta$ belongs to an interval whose length is less than $2\pi$. Note that $J_T(r,\theta)$ vanishes at $r=0$.
 
@@ -459,12 +464,13 @@ Of course, we often use a domain such as $r\in [0,R]$, $\theta = [0,2\pi]$ to de
 
 Before we move on to the change of variables formula, we consider one more example that will help clarify the geometry involved in a change of variables.
 
-\pagebreak
 \noindent\textbf{\large The Jacobian of a Linear Map}\\
 
 Before we continue to the change of variables formula, let us pause to consider an example that may be familiar to you from a first course in linear algebra.
 
-We saw in Example \ref{ex_jacobian1} that when $x$ and $y$ are linear functions of $u$ and $v$, the Jacobian of the transformation is a constant. What does that constant tell us about the transformation? Here is an example taken from the book Matrix Algebra, by Greg Hartman (one of the APEX authors!), which is sometimes used as part of a textbook for our Math 1410 linear algebra course.
+We saw in Example \ref{ex_jacobian1} that when $x$ and $y$ are linear functions of $u$ and $v$, the Jacobian of the transformation is a constant. What does that constant tell us about the transformation? Here is an example taken from the book Matrix Algebra, by Greg Hartman (one of the APEX authors!).
+
+\bigskip
 
 \example{ex_mv_3}{Visualizing a linear function from $\mathbb{R}^2$ to $\mathbb{R}^2$}{Consider the function $T:\mathbb{R}^2\to \mathbb{R}^2$ given by
 \[
@@ -486,9 +492,10 @@ Multiplying each by $A$ gives the vectors
 \[
 \begin{bmatrix}0\\0\end{bmatrix},\quad \begin{bmatrix} 1\\2\end{bmatrix},\quad \begin{bmatrix} 5\\5\end{bmatrix},\quad \begin{bmatrix} 4\\3\end{bmatrix},
 \]
-respectively. 
 
-%\drawexampleline{ex_mv_3}
+\noindent respectively. 
+
+
 
 The unit square and its transformation are graphed in Figure \ref{fig:mv_3}, where the shaped vertices correspond to each other across the two graphs. Note how the square got turned into some sort of quadrilateral (it's actually a parallelogram). A really interesting thing is how the triangular and square vertices seem to have changed places -- it is as though the square, in addition to being stretched out of shape, was flipped. 
 %
@@ -498,6 +505,7 @@ The unit square and its transformation are graphed in Figure \ref{fig:mv_3}, whe
 \begin{minipage}{\textwidth}
 \begin{center}
 \begin{tabular}{cc}
+\resizebox{.5\textwidth}{!}{
 \begin{tikzpicture}
 \draw[thick,<->] (-1.2,0) -- (5.2,0) node[right] {$x$};
 \draw[thick,<->] (0,-1.2) -- (0,5.2) node[above] {$y$};
@@ -519,8 +527,8 @@ The unit square and its transformation are graphed in Figure \ref{fig:mv_3}, whe
 \filldraw [fill=white,thick]  (B) ++(-2pt,-2pt) rectangle ++(4pt,4pt);
 \filldraw [fill=white,thick]  (C) circle (2pt);
 \filldraw [fill=white,thick]  (D) ++(-2.5pt,-2.5pt) -- ++(5pt,0pt) -- ++(-2.5pt,5pt) -- cycle;
-
-\end{tikzpicture}&
+\end{tikzpicture}}&
+\resizebox{.5\textwidth}{!}{
 \begin{tikzpicture}
 \draw[thick,<->] (-1.2,0) -- (5.2,0) node[right] {$x$};
 \draw[thick,<->] (0,-1.2) -- (0,5.2) node[above] {$y$};
@@ -542,7 +550,7 @@ The unit square and its transformation are graphed in Figure \ref{fig:mv_3}, whe
 \filldraw [fill=white,thick]  (G) circle (2pt);
 \filldraw [fill=white,thick]  (H) ++(-2.5pt,-2.5pt) -- ++(5pt,0pt) -- ++(-2.5pt,5pt) -- cycle;
 
-\end{tikzpicture}
+\end{tikzpicture}}
 \end{tabular}
 \end{center}
 \captionsetup{type=figure}
@@ -561,15 +569,18 @@ J_T(u,v) = \det A = 1(3)-4(2)=-5.
 Let us make a note of a few key points about this example. First, note that in this case, the derivative matrix, (and as a result, the Jacobian) is constant. (This of course is generally true of the derivative for linear functions.)
 
 What happens when we apply the map $T$ to the unit square? The value $J_T(u,v)=-5$ tells us two things:
+
 \begin{itemize}
 \item First, the area of the unit square is increased by a factor of 5.
 \item Second, the transformation $T$ reverses the \sword{orientation}\index{orientation} of the unit square. This is indicated by the negative value of the determinant. The reversal of orientation is responsible for the ``flipping'' of the square noticed above.
 \end{itemize} 
 The result of performing the transformation $T$ on the unit square is therefore the following: first, the square is flipped over. Then, the square is stretched out into a parallelogram whose area is 5 times that of the original square.
+
 \mnote{.4}{\textbf{Note:} Recall from linear algebra, that if two vectors $\vec{a}, \vec{b}$ span a parallelogram in the plane, then the determinant of the $2\times 2$ matrix containing $\vec{a}$ and $\vec{b}$ gives the area (up to sign) of the parallelogram.}
-}\\
+}
 
 Let us make a couple of remarks about the preceding example. First, note the need for an absolute value around the determinant, to ensure the area computed is positive. This absolute value will be needed in our change of variables formula as well.
+
 \mnote{.2}{\textbf{Note:} Recall the following property for definite integrals in one variable: $\displaystyle \int_a^bf(x)\,dx = -\int_b^af(x)\,dx$. The definite integral is sensitive to the \emph{orientation} of the interval over which the integration is performed. (Left to right or right to left.) Double and triple integrals do not have this sensitivity. We'll see in Section \ref{sec:parametric_surfaces} how information about orientation is reintroduced in the context of vector calculus.}
 
 Second, since our transformation was linear, with constant derivative, the effect on area is the same for any portion of the plane: applying the transformation $T$ to a closed bounded region $D\subseteq \mathbb{R}^2$ of area $A$ will produce a region of area $5A$. For non-linear transformations, the value of the Jacobian (and hence, the effect on area) will vary from point to point.
@@ -601,6 +612,8 @@ Interesting. Note that the value of the Jacobian is $r$, which is precisely the 
 
 \item Although we haven't defined the Jacobian for a change of coordinates in three variables, the process is exactly the same. We form the derivative of the transformation, given by the matrix of partial derivatives, and compute its determinant. We find:
 \begin{align*}
+%%
+%%
 J_T(r,\theta,\varphi) &= \det\begin{bmatrix} 
 x_\rho(\rho,\theta,\varphi) & x_\theta(\rho,\theta,\varphi) & x_\varphi(\rho,\theta,\varphi)\\
 y_\rho(\rho,\theta,\varphi) & y_\theta(\rho,\theta,\varphi) & y_\varphi(\rho,\theta,\varphi)\\
@@ -626,7 +639,7 @@ z_\rho(\rho,\theta,\varphi) & z_\theta(\rho,\theta,\varphi) & z_\varphi(\rho,\th
 \end{enumerate}
 \vskip-1.5\baselineskip}\\
 
-We computed the above $3\times 3$ determinant using a cofactor expansion along the second column; see Section \ref{sec:matrix_arithmetic} for the definition of the determinant of a square matrix. Except for the minus sign this is once again exactly the correction factor for the volume element in spherical coordinates, as given in Theorem \ref{thm:triple_int_spherical} in Section \ref{sec:cylindrical_spherical}. In fact, we can account for the minus sign as simply an artifact of how the coordinates $(\rho,\theta,\varphi)$ are ordered in Section \ref{sec:cylindrical_spherical}. Had we chosen the order $(\rho,\varphi,\theta)$, the second and third columns in the determinant above would be switched, and the minus sign disappears. This is again related to the question of orientation discussed in the context of linear transformations above.
+We computed the above $3\times 3$ determinant using a cofactor expansion along the second column; see Section \ref{sec:matrix_algebra} for the definition of the determinant of a square matrix. Except for the minus sign this is once again exactly the correction factor for the volume element in spherical coordinates, as given in Theorem \ref{thm:triple_int_spherical} in Section \ref{sec:cylindrical_spherical}. In fact, we can account for the minus sign as simply an artifact of how the coordinates $(\rho,\theta,\varphi)$ are ordered in Section \ref{sec:cylindrical_spherical}. Had we chosen the order $(\rho,\varphi,\theta)$, the second and third columns in the determinant above would be switched, and the minus sign disappears. This is again related to the question of orientation discussed in the context of linear transformations above.
 
 It seems that we're onto something. Let's set aside, for now, questions about what times of functions can be used to define a change of variables, and state the general change of variables formula for multiple integrals. 
 Notice how, as with the derivative $g'(u)$ in Equation \eqref{eqn_single_sub}, the Jacobian gives us a measure of how subregions in the domain are stretched or shrunk.

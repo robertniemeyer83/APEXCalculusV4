@@ -1,4 +1,4 @@
-\section{Matrix Arithmetic}\label{sec:matrix_arithmetic}
+\section{Matrix Algebra}\label{sec:matrix_algebra}
 
 This version of \apex Calculus III V4 does not assume any background in linear algebra.  As such, we include this section to give the reader the necessary background for understanding future computations in Section \ref{sec:deriv_matrix} in a broader context.  
 
@@ -243,6 +243,77 @@ Similarly, for any fixed $j$, $1\leq j\leq n$, we may define the determinant of 
 \example{ex_general_determinant_3x3}{The determinant of a $3\times 3$ matrix}
 {Compute the determinant of the matrix $A$ in Example \ref{ex_determinant_3x3_matrix} by expanding along the first column.}
 {This amounts to letting $j=1$ and letting $i$ vary from $1$ to $3$ in the general formula given in Definition \ref{def_general_determinant_nxn}.}
+
+%Identity matrix and eigenvalues
+
+An $n\times n$ square matrix with only ones along the diagonal is called the $n\times n$ identity matrix:
+
+\[
+I_{n\times n} = \begin{bmatrix}
+	1 & 0 &\dots & 0\\
+	0 & 1 &\dots & 0\\
+	\vdots & \vdots & \ddots & 0\\
+	0 & 0 &\dots & 1
+\end{bmatrix}
+\]
+
+Consider a square matrix $A_{n\times n}$ and the matrix expression $A_{n\times n}-\lambda I_{n\times n}$.  The following equation yields what is called the \sword{characteristic polynomial} of  $A_{n \times n}$:
+
+\[\det (A-\lambda I) = 0.\]
+
+\example{ex_characteristic_polynomial}{Compute eigenvalues}{Compute the characteristic polynomial of the following matrices.
+
+\[A = 
+\begin{bmatrix}
+	1 &2& -1 \\
+	0 & -3 & 4\\
+	-2 & 0 & 5	
+\end{bmatrix}
+\]
+}
+{First, we compute $A - \lambda I$:
+\[A -\lambda I= 
+\begin{bmatrix}
+	1-\lambda &2& -1 \\
+	0 & -3 -\lambda & 4\\
+	-2 & 0 & 5-\lambda 	
+\end{bmatrix}
+\]
+
+Expanding along the first column, the determinant of $A-\lambda I$ is 
+\begin{align*}
+\det (A-\lambda I) &= \det 
+\begin{bmatrix}
+	1-\lambda &2& -1 \\
+	0 & -3 -\lambda & 4\\
+	-2 & 0 & 5-\lambda 	
+\end{bmatrix}\\
+& = (1-\lambda)(-3-\lambda)(5-\lambda)+(-2)(2\cdot 4 -(3+\lambda))\\
+	&= -(1-\lambda)(3+\lambda)(5-\lambda) - 2(5-\lambda) \\
+	&= -(5-\lambda)(1-\lambda)(3+\lambda)+2)\\
+	&= -(5-\lambda)(3-2\lambda -\lambda^2+2)\\
+	&= -(5-\lambda)(5-2\lambda - \lambda^2).
+\end{align*}
+
+We now want to solve the equation $\det(A-\lambda I) = 0$:
+
+\begin{align*}
+	0 &=-(5-\lambda)(5-2\lambda - \lambda^2)\\
+	0 &=(5-\lambda)(5-2\lambda -\lambda^2)\\
+	\lambda = 5 &\quad \lambda = -\frac{2\pm\sqrt{24}}{2}
+\end{align*}
+After we simplify, we see that our eigenvalues are $\lambda = 5,\, -1\pm \sqrt{6}$.
+}
+
+\bigskip
+
+When we introduce the general 2nd derivative test for local minimum and maximum of multivariable functions in Section \ref{sec:multi_extreme_further}, we will make use of the eigenvalues of a particular matrix.
+
+
+
+
+%Eigenvalues
+
 
 
 %%then show how to multiply a matrix by a vector

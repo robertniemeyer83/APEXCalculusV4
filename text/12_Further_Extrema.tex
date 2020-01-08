@@ -35,9 +35,9 @@ We see that the absolute maximum is when $t=\pi$: $h(\pi) = f(-2,0)=20$, and the
 
 The above method works well, when it's straightforward to set up. The advantage is that it reduces the problem of optimization along the boundary to an optimization problem in one variable, which is something we mastered long ago.
 
-One downside is that it is not always easy to come up with a parametrization for a curve. In the above example, the boundary $x^2+y^2=4$ is a \emph{level curve}: it's of the form $g(x,y)=c$. When we're trying to optimize subject to a constraint of this form, there is another approach, called the \sword{method of Lagrange multipliers}. \index{Lagrange multipliers}\index{optimization ! with Lagrange multipliers}.
+One downside is that it is not always easy to come up with a parametrization for a curve. In the above example, the boundary $x^2+y^2=4$ is a \emph{level curve}: it's of the form $g(x,y)=c$. When we're trying to optimize subject to a constraint of this form, there is another approach, called the \sword{method of Lagrange multipliers}. \index{Lagrange multipliers}\index{optimization ! with Lagrange multipliers}
 
-Suppose we are trying to maximize a function $f(x,y)$ subject to a constrain $g(x,y)=c$. We could follow the approach given above: find a function $\vec{r}: [a,b]\to \mathbb{R}^2$ that parametrizes the curve $g(x,y)=c$. As we saw above, the maximum (or minimum) should occur at some point $t_0$ that is a critical number of $h(t)=f(\vec{r}(t))$; that is, such that 
+Suppose we are trying to maximize a function $f(x,y)$ subject to a constraint $g(x,y)=c$. We could follow the approach given above: find a function $\vec{r}: [a,b]\to \mathbb{R}^2$ that parametrizes the curve $g(x,y)=c$. As we saw above, the maximum (or minimum) should occur at some point $t_0$ that is a critical number of $h(t)=f(\vec{r}(t))$; that is, such that 
 \[
 h'(t_0)=\nabla f(\vec{r}(t_0))\cdot \vrp (t_0) = 0.
 \]
@@ -310,7 +310,8 @@ Comparing values, we see that the maximum value for $f$, when constrained to uni
 \]
 along with the two constraint equations. Problems involving large (or even arbitrary!) numbers of variables and constraints are encountered everywhere from Economics to Quantum Mechanics.}
 
-As the above examples show, Lagrange multiplier problems are often easy to set up, but hard to solve by hand. So why is the method useful? One reason is that it can be used to establish useful theoretical results. But more practically, the method of Lagrange multipliers is useful because it is easy to program into a computer: we simply provide the function and the constraint(s), and the computer solves the resulting equations. There is no need for the same degree of problem-solving employed when we first tackled optimization problems in one variable, back in Calculus I. To emphasize this, we consider one more example: a reprise of one of the optimization problems from Section \ref{sec:optimization}.%\pagebreak
+As the above examples show, Lagrange multiplier problems are often easy to set up, but hard to solve by hand. So why is the method useful? One reason is that it can be used to establish useful theoretical results. But more practically, the method of Lagrange multipliers is useful because it is easy to program into a computer: we simply provide the function and the constraint(s), and the computer solves the resulting equations. There is no need for the same degree of problem-solving employed when we first tackled optimization problems in one variable, back in Calculus I. To emphasize this, we consider one more example: a reprise of one of the optimization problems from Section \ref{sec:optimization}.
+\bigskip
 
 \example{ex_lagrange4}{Solving an optimization problem with Lagrange multipliers}
 {
@@ -444,7 +445,7 @@ We say that $A$ is {\em non-degenerate} if $\det A\neq 0$; this is equivalent to
 
 A quadratic function $q$ is called {\em positive-definite} if $q(\vec{x})\geq 0$ for all $\vec{x}\in\mathbb{R}^n$, and $q(\vec{x})=0$ only for $\vec{x}=\vec{0}$. (Note that the quadratic function $q(x,y)=x^2-y^2$ given above is {\em not} positive definite; however, $\tilde{q}(x,y) = x^2+y^2$ is.) Similarly, $q$ is {\em negative-definite} if $q(\vec{x})\leq 0$ for all $\vec{x}\in\mathbb{R}^n$ with $q(\vec{x})=0$ for $\vec{x}=\vec{0}$ only.
 
-If $q(\vec{x}) = \vec{x}\cdot A\vec{x}$ is positive(negative)-definite, we refer to the corresponding symmetric matrix $A$ as positive(negative)-definite as well. In general it can be difficult to determine when a given quadratic function (or its corresponding matrix) is positive or negative-definite. In the case of a $2\times 2$ matrix $A = \begin{bmatrix} a&b\\b&c\end{bmatrix}$ we get
+If $q(\vec{x}) = \vec{x}\cdot A\vec{x}$ is positive(negative)-definite, we refer to the corresponding symmetric matrix $A$ as positive(negative)-definite as well. In general, it can be difficult to determine when a given quadratic function (or its corresponding matrix) is positive or negative-definite. In the case of a $2\times 2$ matrix $A = \begin{bmatrix} a&b\\b&c\end{bmatrix}$ we get
 \begin{align*}
 q(x_1,x_2)&= ax_1^2+2bx_1x_2+cx_2^2\\
 &=a\left(x_1+\frac{b}{a}x_2\right)^2+\left(c-\frac{b^2}{a}\right)x_2^2,
@@ -503,7 +504,9 @@ Finally, let us define a critical point $\vec{a}$ for $f$ to be {\em non-degener
 Let $f:\mathbb{R}^n\to\mathbb{R}$ be three times continuously differentiable, and suppose that $f$ has a non-degenerate critical point at $\vec{a}$. If $\Hess f(\vec{a})$ is positive-definite, then $\vec{a}$ is a local minimum for $f$. Similarly, if $\Hess f(\vec{a})$ is negative-definite, then $\vec{a}$ is a local maximum for $f$.
 }
 
-The way to think about this intuitively is the following: the matrix $\Hess f(\vec{a})$ is symmetric. We know from Linear Algebra that every symmetric matrix can be diagonalized. Less obvious (but still true) is that we can make a (linear) change of variables $(u_1,\ldots, u_n) = T(x_1,\ldots, x_n)$ so that the vectors in the direction of the $u_i$ coordinate axes are eigenvectors for $\Hess f(\vec{a})$. Slightly harder to show (but also true) is that this change of variables can be chosen so that it is \sword{orthogonal}. That is, we simply have to \emph{rotate} our coordinate system: lengths and angles are all preserved.
+What follows is a fairly technical discussion and proof of Theorem \ref{thm:second_deriv_general}.  The motivated reader is encouraged to read what follows, but not be expected to fully understand much of it without a proper introduction to linear algebra.  Some material has been provided in Section \ref{sec:matrix_algebra} so as to make the preceding material regarding positive definite and negative definite matrices more tractable.  In order to fully grasp what follows, the reader is advised to refer to a text on linear algebra, specifically the section on eigenvectors and bases for a vector space.  
+ 
+The way to think about this intuitively is the following: the matrix $\Hess f(\vec{a})$ is symmetric, which means that each entry indexed by $i,j$ is equal to the entry indexed by $j,i$. A fact learned in Linear Algebra is that every symmetric matrix can be diagonalized. Less obvious (but still true) is that we can make a (linear) change of variables $(u_1,\ldots, u_n) = T(x_1,\ldots, x_n)$ so that the vectors in the direction of the $u_i$ coordinate axes are eigenvectors (specific vectors associated with the eigenvalues) for $\Hess f(\vec{a})$. Slightly harder to show (but also true) is that this change of variables can be chosen so that it is \sword{orthogonal}. That is, we simply have to \emph{rotate} our coordinate system: lengths and angles are all preserved.
 
 In this new coordinate system, the Hessian matrix is diagonal:
 \[
