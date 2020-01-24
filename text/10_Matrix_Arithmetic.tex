@@ -1,6 +1,6 @@
 \section{Matrix Algebra}\label{sec:matrix_algebra}
 
-This version of \apex Calculus III V4 does not assume any background in linear algebra.  As such, we include this section to give the reader the necessary background for understanding future computations in Section \ref{sec:deriv_matrix} in a broader context.  
+This version of \apex{} Calculus III V4 does not assume any background in linear algebra.  As such, we include this section to give the reader the necessary background for understanding future computations in Section \ref{sec:deriv_matrix} and beyond.
 
 \bigskip
 
@@ -19,7 +19,7 @@ a_{m,1} & a_{m,2}  & \dots  & a_{m,n}
 
 The matrix $A_{m\times n}$ is a two-dimensional array of values where each entry $a_{i,j}$ is indexed by two positive integers $i$ and $j$, where $1\leq i\leq m$ and $1\leq j \leq n$.  There are $m$ many rows and $n$ many columns in the matrix.  
 
-One way to view a matrix $A_{m\times n}$ is in terms of its $m$-many row vectors, or viewing each row of a matrix as a vector in its own right.  Similarly, one can view a matrix as comprised of $n$-many column vectors, each column vector having $m$-many entries. 
+One way to view a matrix $A_{m\times n}$ is in terms of its $m$-many row vectors.  In other words, viewing each row of a matrix as a vector in its own right.  Similarly, one can view a matrix as comprised of $n$-many vectors, each column being a vector with $m$-many entries. 
 \bigskip
 
 What we want to first understand is under what conditions can we add and subtract two matrices.  For addition and subtraction of matrices to make sense, both matrices must have the same dimensions, namely $m\times n$. \\ 
@@ -104,8 +104,8 @@ Consider the following matrices.
 
 \begin{align}
 	A = \begin{bmatrix}
-		2, -1, 0\\
-		\pi, 3, e
+		2& -1& 0\\
+		\pi & 3& e
 	\end{bmatrix}
 	&\quad B = \begin{bmatrix}
 		1 & 9 \\
@@ -224,7 +224,7 @@ You will notice in the preceding definition that the determinant of a square mat
 				& = 60+5(-32)+2(-8)\\
 				& = -116.
 \end{align*}
-}\\
+}
 
 What is presented in Definition \ref{def_determinant_nxn} is the definition of a determinant as computed by \sword{expanding along the first row.}  In reality, one is allowed to \sword{expand along any row or column} of the matrix $A$.  We give the formal general definition as follows.
 
@@ -261,7 +261,9 @@ Consider a square matrix $A_{n\times n}$ and the matrix expression $A_{n\times n
 
 \[\det (A-\lambda I) = 0.\]
 
-\example{ex_characteristic_polynomial}{Compute eigenvalues}{Compute the characteristic polynomial of the following matrices.
+The zeros of the characteristic polynomial are called eigenvalues of the matrix $A$.  
+
+\example{ex_characteristic_polynomial}{Compute the Eigenvalues of a Matrix}{Compute the characteristic polynomial of the following matrix and determine its eigenvalues.
 
 \[A = 
 \begin{bmatrix}

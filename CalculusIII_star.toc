@@ -15,7 +15,7 @@
 \contentsline {section}{\numberline {10.4}The Cross Product}{604}{section.10.4}
 \contentsline {section}{\numberline {10.5}Lines}{615}{section.10.5}
 \contentsline {section}{\numberline {10.6}Planes}{626}{section.10.6}
-\contentsline {section}{\numberline {10.7}Matrix Arithmetic}{634}{section.10.7}
+\contentsline {section}{\numberline {10.7}Matrix Algebra}{634}{section.10.7}
 \thispagestyle {empty}
 \enlargethispage {7\baselineskip }
 \contentsline {chapter}{\numberline {11}Vector Valued Functions}{641}{chapter.11}
