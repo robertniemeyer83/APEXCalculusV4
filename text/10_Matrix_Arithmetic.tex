@@ -69,7 +69,7 @@ A+B &=
 
 Subtraction of matrices is similarly performed.  
 \begin{align}  
-A+B &=  
+A-B &=  
 \begin{bmatrix}
 	3 & \pi & e \\
 	-1 &0 & \frac{3}{2}\\
@@ -90,7 +90,7 @@ A+B &=
 }\\
 
 
-Multiplying matrices is a bit more complicated.  If we have matrices $A_{m\times n}$ and $B_{r\times s}$, then the product of these two matrices will only be defined if $r=n$.  In general, if $r=n$, then $A_{m\times n}B_{r\times s} = C_{m\times s}$.  In other words, the product of two matrices with indices matching up appropriately will be a matrix with the aforementioned dimensions, $m\times s$.  We now describe how to compute the product of two matrices.
+Multiplying matrices is a bit more complicated.  If we have matrices $A_{m\times n}$ and $B_{r\times s}$, then the product $AB$ will only be defined if $r=n$.  In general, if $r=n$, then $A_{m\times n}B_{r\times s} = C_{m\times s}$.  In other words, the product of two matrices with indices matching up appropriately will be a matrix with the aforementioned dimensions, $m\times s$.  We now describe how to compute the product of two matrices.
 
 Let $A_{m\times n}$ and $B_{n\times s}$ be two matrices.   Then $A_{m\times n}B_{n\times s} = C_{m\times s}$ where 
 
@@ -116,7 +116,7 @@ Consider the following matrices.
 Compute the product $AB$.
 }
 {
-We know that the product of these two matrices will be a matrix with 2 rows and 2 columns.  The entry $c_{ij}$ of the matrix $C_{2\times 2}$ will be, as described above:
+We know that the product $AB$ will be a matrix with 2 rows and 2 columns.  The entry $c_{ij}$ of the matrix $C_{2\times 2}$ will be, as described above:
 
 \[c_{i,j} = \sum_{k=1}^3 a_{i,k}b_{k,j}.\]
 
@@ -137,6 +137,8 @@ Continuing, we see that
 \end{bmatrix}.
 \]
 }\\
+
+In general, however, matrix multiplication is not commutative.  For example, if $A_{3\times 2}$ and $B_{2\times 3}$ are two matrices, then $AB$ will be a $3\times 3$ matrix, while $BA$ will be a $2\times 2$ matrix.
 
 You may have noticed that one can reframe matrix multiplication as the dot product of a row vector and a column vector.  The dot product of a row vector of $A$ and a column vector of $B$ yields a single entry in $C$.  In terms of our notation, this is 
 
@@ -313,21 +315,4 @@ When we introduce the general 2nd derivative test for local minimum and maximum 
 
 
 
-
-%Eigenvalues
-
-
-
-%%then show how to multiply a matrix by a vector
-
-%% relate this back to the dot product
-
-%%Then show how to multiply matrices
-
-%%introduce n\times n identity matrix and invertible matrices.
-
-%%show how to compute the determinant of an $n\times n$ matrix
-
-%%show that an $n\times n$ matrix is invertible if and only if det A neq 0
-
-%% 
+\printexercises{exercises/10_07_exercises}

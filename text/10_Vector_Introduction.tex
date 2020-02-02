@@ -5,7 +5,7 @@ Many quantities we think about daily can be described by a single number: temper
 One ``bare--bones'' definition of a vector is based on what we wrote above: ``a vector is a mathematical object with magnitude and direction parameters.'' This definition leaves much to be desired, as it gives no indication as to how such an object is to be used. Several other definitions exist; we choose here a definition rooted in a geometric visualization of vectors. It is very simplistic but readily permits further investigation.
 
 \definition{def:vector}{Vector}
-{A \textbf{vector} is a directed line segment.\\
+{A \textbf{vector} in $\mathbb{R}^2$ or $\mathbb{R}^3$ is a directed line segment.\\
 
 Given points $P$ and $Q$ (either in the plane or in space), we denote with $\vv{PQ}$ the vector \textit{from $P$ to $Q$}. The point $P$ is said to be the \textbf{initial point} of the vector, and the point $Q$ is the \textbf{terminal point}. \\
 
@@ -83,7 +83,7 @@ magnitude.
 \vskip-\baselineskip
 }\\
 
-Now that we have defined vectors, and have created a nice notation by which to describe them, we start considering how vectors interact with each other. That is, we define an \textit{algebra} on vectors. 
+Now that we have defined vectors in $\mathbb{R}^2$ and $\mathbb{R}^3$, and have created a nice notation by which to describe them, we start considering how vectors interact with each other. That is, we define an \textit{algebra} on vectors in $\mathbb{R}^2$ and $\mathbb{R}^3$. 
 \clearpage
 
 \definition{def:vector_algebra}{Vector Algebra}
@@ -369,16 +369,19 @@ $$5 + 5\sqrt{26}\cos \varphi = 0 \quad \Rightarrow \quad \varphi = \cos^{-1}\lef
 Subtracting $90^\circ$ from this angle gives us an angle of $11.31^\circ$ with the vertical.
 
 We can now use trigonometry to find out how high the weight is lifted. The diagram shows that a right triangle is formed with the 2ft chain as the hypotenuse with an interior angle of $11.31^\circ$. The length of the adjacent side (in the diagram, the dashed vertical line) is $2\cos 11.31^\circ \approx 1.96$ft. Thus the weight is lifted by about $0.04$ft, almost 1/2in.
-}\\
+}
 
-The algebra we have applied to vectors is already demonstrating itself to be very useful. There are two more fundamental operations we can perform with vectors, the \emph{dot product} and the \emph{cross product}. As we will see, the dot product is an operation on vectors in $\mathbb{R}^n$, while the cross product is an operation on vectors only in $\mathbb{R}^3$. The next two sections explore each in turn.
+The algebra we have applied to vectors is already demonstrating itself to be very useful. There are two more fundamental operations we can perform with vectors, the \emph{dot product} and the \emph{cross product}. As we will see, the dot product is an operation on vectors in $\mathbb{R}^n$, while the cross product is an operation on vectors only in $\mathbb{R}^3$. Sections \ref{sec:dot_product} and \ref{sec:cross_product} explore these topics in more detail.
+
+It is important to note that all of the preceding material indeed holds for vectors in $\mathbb{R}^n$\footnote{except for previously mentioned cross-product}, where $n$ is any positive integer.  The idea that a vector is a directed line segment is useful in $\mathbb{R}^n$ and all of the preceding algebra, arithmetic and properties of vectors in $\mathbb{R}^2$ and $\mathbb{R}^3$ hold for vectors in $\mathbb{R}^n$.  
+
+Indeed, it is inaccurate to say that $\mathbb{R}^2$ and $\mathbb{R}^3$ are the only two vector spaces you will ever encounter.  While most physical applications lie in 2D and 3D, it is possible to encounter other situations where knowing the abstract definition of a normed vector space is important.  For this reason, we delve into the deeper abstract notion of a normed vec vector space.
 
 
-\subsection{Abstract vector spaces}
+\subsection{Abstract vector spaces and norms}
 \label{subsec:abstract_vector_spaces}
 The perspective taken above is that a vector in $\mathbb{R}^n$ is a directed line segment.  This is a very useful geometric interpretation of a vector in $\mathbb{R}^n$, but will be deceiving as we introduce the idea of a linear transformation in Section \ref{sec:deriv_matrix} and discuss the derivative as a linear transformation on the vector space of functions.  We do not want to get bogged down by too much linear algebra, but we present here the basics so that subsequent sections and chapters (as well as concepts throughout) are more digestible.  Such an abstract presentation will  port well to other courses later in a student's career (abstract algebra, linear algebra, real analysis and functional analysis, to name a few).
 
-\bigskip
 
 A set is something we wont formally define here (as one cannot actually formally define \textit{set}), so we simply say it is a collection of elements without getting bogged down in a philosophical discussion, one from which we will never escape.  
 
@@ -400,7 +403,7 @@ A set is something we wont formally define here (as one cannot actually formally
 You will notice that these are exactly the same properties we listed in Theorem \ref{thm:vector_properties} in the context of $\mathbb{R}^n$, except the last three properties are missing. That is because $\mathbb{R}^n$ is what we would call a vector space and the presence of $\norm{\cdot}$ gives us what is called a normed vector space, a fancy way of saying that our  vectors have magnitude (or, in the case of vectors in $\mathbb{R}^n$---taking the geometric interpretation---a notion of length).  The symbol $\norm{\cdot}$ represents a norm and how it is computed may change depending on the vector space, but the three properties below must hold for a norm:
 
 \definition{def:norm}{Properties of $\norm{\cdot}$  on an Abstract Vector Space}
-{If $\vec u$ and $\vec v$ are in $V$ and $c$ is a scalar, then \index{vectors!properties of an abstract norm}
+{Let $V$ be a vector space.  If $\vec u$ and $\vec v$ are in $V$ and $c$ is a scalar, then \index{vectors!properties of an abstract norm}
 \begin{enumerate}
 	\item \parbox{150pt}{$\norm{\vec u+\vec v}\leq \norm{\vec u}+\norm{\vec v}$}Triangle Inequality
 	\item	\parbox{150pt}{$\norm{c\vec v} = |c|\cdot\norm{\vec v}$}\label{thm:norm_prop}
@@ -408,12 +411,14 @@ You will notice that these are exactly the same properties we listed in Theorem 
 \end{enumerate}
 }
 
-We can certainly get lost in the weeds if we venture too far off our beaten path of Calculus III.  What we want to stress here is that $\mathbb{R}^n$ is an example of a much deeper concept called a normed vector space.  When we discuss a linear transformation in Section \ref{sec:deriv_matrix}, we will do so in the context of an abstract vector space since we will show that the derivative is indeed a linear transformation on the vector space of differentiable functions.  As a preview of this, we show that the space of differentiable functions is indeed a vector space.\footnote{Actually, it is a normed vector space, but we will not discuss the norm on such a vector space at this point or future points, as such a concept is beyond the scope of this text and course.  Read: beware all ye who enter!  But, such a topic is of great interest and excitement should the reader be curious.}\\
+We can certainly get lost in the weeds if we venture too far off our beaten path of Calculus III.  What we want to stress here is that $\mathbb{R}^n$ is an example of a much deeper concept called a normed vector space.  When we discuss a linear transformation in Section \ref{sec:deriv_matrix}, we will do so in the context of an abstract vector space. We will show that the derivative is indeed a linear transformation on the vector space of differentiable functions.  As a preview of this, we show that the space of differentiable functions is indeed a vector space.\footnote{Actually, it is a normed vector space, but we will not discuss the norm on such a vector space at this point or future points, as such a concept is beyond the scope of this text and course.  Read: beware all ye who enter!  But, such a topic is of great interest and excitement should the reader be curious.}
 
-\example{ex_differentiableFunctionsVectorSpace}{The set of differentiable functions is a vector space}
+\smallskip
+
+\example{ex_differentiableFunctionsVectorSpace}{The set of differentiable functions is a vector space.}
 {Show that the set $D$ containing differentiable function $f:\mathbb{R}\to\mathbb{R}$ is a vector space}
 {
-Let $D$ be the set of differentiable functions, each defined on $\mathbb{R}$,  $f,g\in D$, and $c$ a scalar quantity.  In order to confirm that $D$ is a vector space, we What we need to do is verify that each property in Definition \ref{def:vector_properties_abstract_vector_space} holds for $D$.  There are some details we are sweeping under the carpet here, but they will not interfere with the moral of our example: to show some set is a vector space.  So, without further ado,
+Let $D$ be the set of differentiable functions, each defined on $\mathbb{R}$,  $f,g\in D$, and $c$ a scalar quantity.  In order to confirm that $D$ is a vector space, we need to verify that each property in Definition \ref{def:vector_properties_abstract_vector_space} holds for $D$.  There are some details we are sweeping under the carpet here, but they will not interfere with the moral of our example: to show some set is a vector space.  If we take for granted that $\mathbb{R}$ is a vector space, then we can use that to our advantage to show that $D$ is a vector space.  We start by showing addition of differentiable functions is commutative.
 
 \begin{enumerate}
 	\item $f+g = g+f$.  
@@ -433,9 +438,9 @@ Let $D$ be the set of differentiable functions, each defined on $\mathbb{R}$,  $
 	Since $x$ was arbitrary, we see that addition of elements in $D$ is associative.
 	
 	
-	\item There is a function, called the zero function, that serves as the additive identity in $D$.  It has the property that $z(x) =0 $ for every $x$.  Simply put, it is the constant function zero.  We resort back to how addition of functions is defined to finish our argument: 
+	\item There is a function $z$, called the zero function, that serves as the additive identity in $D$.  It has the property that $z(x) =0 $ for every $x$.  Simply put, it is the constant function zero.  We resort back to how addition of functions is defined to finish our argument: 
 	 \begin{align*} 
-	 (f+\vec{0})(x) &= f(x)+z(x)\\
+	 (f+z)(x) &= f(x)+z(x)\\
 	 					   &= f(x)+0\\
 	 					   &= f(x)
 	 \end{align*}
@@ -444,7 +449,7 @@ Let $D$ be the set of differentiable functions, each defined on $\mathbb{R}$,  $
 	 
 	 \item Since $f$ is a real-valued function, when we evaluate $f$ at $x$, $f(x)$ is a real number.  Therefore, $-f(x)$---the additive identity of the real number $f(x)$---exists.  Therefore, there exists $-f$ such that $(f+(-f))(x) = z(x) = 0$ for every $x$, making $-f$ the additive inverse of $f$ in $D$.  
 \end{enumerate}
-The rest of the properties can be similarly verified by resorting back to the fact that $f(x)$ is a real value.  The subtle point we are making here is that $f$ is the function and $f(x)$ is a real number.  Since we already know $\mathbb{R}$ is a vector space (taking that for granted, really), we can use that to our advantage to show that $D$ is a vector space.
+The rest of the properties can be similarly verified by resorting back to the fact that $f(x)$ is a real value.  The subtle point we are making here is that $f$ is the function and $f(x)$ is a real number.  
 }
 
 \printexercises{exercises/10_02_exercises}
